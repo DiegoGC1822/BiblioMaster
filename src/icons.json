@@ -1,0 +1,114 @@
+{
+    "Administrator" :  [
+                {
+                    "name": "Libros",
+                    "class": "fa-solid fa-book",
+                    "to": "/newbooks",
+                    "subIcons": [
+                        {
+                            "name": "Agregar",
+                            "class": "fa-solid fa-plus",
+                            "to": "/newbook"
+                        },
+                        {
+                            "name": "Editar",
+                            "class": "fa-solid fa-pen",
+                            "to": "/editbooks"
+                        }
+                    ]
+                },
+                {
+                    "name": "Usuarios",
+                    "class": "fa-solid fa-users",
+                    "to": "/users",
+                    "subIcons": [
+                        {
+                            "name": "Crear",
+                            "class": "fa-solid fa-plus",
+                            "to": "/newuser"
+                        },
+                        {
+                            "name": "Editar",
+                            "class": "fa-solid fa-pen",
+                            "to": "/editusers"
+                        }
+                    ]
+                },
+                {
+                    "name": "Prestamo",
+                    "class": "fa-solid fa-suitcase",
+                    "to": "/loan",
+                    "subIcons": [
+                        {
+                            "name": "Generar PDF",
+                            "class": "fa-solid fa-file-pdf",
+                            "to": "/loan"
+                        }
+                    ]
+                },
+                {
+                    "name": "Devoluciones",
+                    "class": "fa-solid fa-rotate-left",
+                    "to": "/returns",
+                    "subIcons": [
+                        {
+                            "name": "Generar PDF",
+                            "class": "fa-solid fa-file-pdf",
+                            "to": "/returns"
+                        }
+                    ]
+                },
+                {
+                    "name": "Sanciones",
+                    "class": "fa-solid fa-ban",
+                    "to": "/sancions",
+                    "subIcons": [
+                        {
+                            "name": "Generar PDF",
+                            "class": "fa-solid fa-file-pdf",
+                            "to": "/sancions"
+                        }
+                    ]
+                },
+                {
+                    "name": "Sesiones",
+                    "class": "fa-solid fa-person-circle-check",
+                    "to": "/sessions",
+                    "subIcons": [
+                        {
+                            "name": "Generar PDF",
+                            "class": "fa-solid fa-file-pdf",
+                            "to": "/sessions"
+                        }
+                    ]   
+                },
+                {
+                    "name": "Administrar",
+                    "class": "fa-solid fa-user-gear",
+                    "to": "/admin",
+                    "subIcons": [
+                        {
+                            "name": "Datos",
+                            "class": "fa-solid fa-database",
+                            "to": "/admin"
+                        },
+                        {
+                            "name": "Cambiar contraseña",
+                            "class": "fa-solid fa-user-pen",
+                            "to": "/editadmin"
+                        },
+                        {
+                            "name": "Cerrar Sesion",
+                            "class": "fa-solid fa-right-from-bracket",
+                            "to": "/"
+                        },
+                        {
+                            "name": "Salir",
+                            "class": "fa-solid fa-xmark",
+                            "to": "/"
+                        }
+                    ]
+                }   
+            ],
+        "Estudent" : []
+}
