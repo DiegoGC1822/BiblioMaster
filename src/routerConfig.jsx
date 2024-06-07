@@ -1,6 +1,5 @@
 import { Login } from "./pages/Login.jsx"
-import { NewBooks } from "./pages/NewBooks.jsx"
-import { EditBooks } from "./pages/EditBooks.jsx"
+import { Books } from "./pages/Books/Books.jsx"
 
 export const routes = [
     {
@@ -9,10 +8,10 @@ export const routes = [
     },
     {
         path: "/newbooks",
-        element: <NewBooks/>
+        element: <Books/>
     },
     {
         path: "/editbooks",
-        element: <EditBooks/>
+        element: <Books/>
     }
 ]
