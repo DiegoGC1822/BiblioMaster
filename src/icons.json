@@ -3,112 +3,114 @@
                 {
                     "name": "Libros",
                     "class": "fa-solid fa-book",
-                    "to": "/newbooks",
+                    "to": ["/newbook", "/editbook"],
                     "subIcons": [
                         {
                             "name": "Agregar",
                             "class": "fa-solid fa-plus",
-                            "to": "/newbook"
+                            "to": ["/newbook"]
                         },
                         {
                             "name": "Editar",
                             "class": "fa-solid fa-pen",
-                            "to": "/editbooks"
+                            "to": ["/editbook"]
                         }
                     ]
                 },
                 {
                     "name": "Usuarios",
                     "class": "fa-solid fa-users",
-                    "to": "/users",
+                    "to": ["/newuser", "/edituser"],
                     "subIcons": [
                         {
                             "name": "Crear",
                             "class": "fa-solid fa-plus",
-                            "to": "/newuser"
+                            "to": ["/newuser"]
                         },
                         {
                             "name": "Editar",
                             "class": "fa-solid fa-pen",
-                            "to": "/editusers"
+                            "to": ["/edituser"]
                         }
                     ]
                 },
                 {
                     "name": "Prestamo",
                     "class": "fa-solid fa-suitcase",
-                    "to": "/loan",
-                    "subIcons": [
-                        {
-                            "name": "Generar PDF",
-                            "class": "fa-solid fa-file-pdf",
-                            "to": "/loan"
-                        }
-                    ]
+                    "to": ["/loan"]
                 },
                 {
                     "name": "Devoluciones",
                     "class": "fa-solid fa-rotate-left",
-                    "to": "/returns",
-                    "subIcons": [
-                        {
-                            "name": "Generar PDF",
-                            "class": "fa-solid fa-file-pdf",
-                            "to": "/returns"
-                        }
-                    ]
+                    "to": ["/returns"]
                 },
                 {
                     "name": "Sanciones",
                     "class": "fa-solid fa-ban",
-                    "to": "/sancions",
-                    "subIcons": [
-                        {
-                            "name": "Generar PDF",
-                            "class": "fa-solid fa-file-pdf",
-                            "to": "/sancions"
-                        }
-                    ]
-                },
-                {
-                    "name": "Sesiones",
-                    "class": "fa-solid fa-person-circle-check",
-                    "to": "/sessions",
-                    "subIcons": [
-                        {
-                            "name": "Generar PDF",
-                            "class": "fa-solid fa-file-pdf",
-                            "to": "/sessions"
-                        }
-                    ]   
+                    "to": ["/sancions"]
                 },
                 {
                     "name": "Administrar",
                     "class": "fa-solid fa-user-gear",
-                    "to": "/admin",
+                    "to": ["/data", "/changepassword"],
                     "subIcons": [
                         {
                             "name": "Datos",
                             "class": "fa-solid fa-database",
-                            "to": "/admin"
+                            "to": ["/data"]
                         },
                         {
                             "name": "Cambiar contraseña",
                             "class": "fa-solid fa-user-pen",
-                            "to": "/editadmin"
+                            "to": ["/changepassword"]
                         },
                         {
                             "name": "Cerrar Sesion",
                             "class": "fa-solid fa-right-from-bracket",
-                            "to": "/"
-                        },
-                        {
-                            "name": "Salir",
-                            "class": "fa-solid fa-xmark",
-                            "to": "/"
+                            "to": ["/"]
                         }
                     ]
                 }   
             ],
-        "Estudent" : []
+        "Estudent" : [
+            {
+                "name": "Libros",
+                "class": "fa-solid fa-book",
+                "to": ["/bookloan","/renovation","/request"],
+                "subIcons": [
+                    {
+                        "name": "Prestamo",
+                        "class": "fa-solid fa-suitcase",
+                        "to": ["/bookloan"]
+                    },
+                    {
+                        "name": "Renovación",
+                        "class": "fa-solid fa-rotate-left",
+                        "to": ["/renovation"]
+                    },
+                    {
+                        "name": "Solicitudes",
+                        "class": "fa-solid fa-plus",
+                        "to": ["/request"]
+                    }
+                ]
+            },
+            {
+                "name": "Administrar",
+                "class": "fa-solid fa-user-gear",
+                "to": ["/data"],
+                "subIcons": [
+                    {
+                        "name": "Datos",
+                        "class": "fa-solid fa-database",
+                        "to": ["/data"]
+                    },
+                    {
+                        "name": "Cerrar Sesion",
+                        "class": "fa-solid fa-right-from-bracket",
+                        "to": ["/"]
+                    }
+                ]
+            }
+        ]
 }
