@@ -8,7 +8,7 @@ export const Books = () => {
     const location = useLocation()
 
     const handleBooks = () => {
-        if(location.pathname === '/newbooks') {
+        if(location.pathname === '/newbook') {
             return <NewBooks/>
         }else{
             return <EditBooks/>
