@@ -37,7 +37,19 @@
                 {
                     "name": "Prestamo",
                     "class": "fa-solid fa-suitcase",
-                    "to": ["/loan"]
+                    "to": ["/pending","/history"],
+                    "subIcons": [
+                        {
+                            "name": "Pendientes",
+                            "class": "fa-solid fa-clock",
+                            "to": ["/pending"]
+                        },
+                        {
+                            "name": "Historial",
+                            "class": "fa-solid fa-folder",
+                            "to": ["/history"]
+                        }
+                    ]
                 },
                 {
                     "name": "Devoluciones",

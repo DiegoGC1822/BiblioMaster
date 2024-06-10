@@ -45,7 +45,11 @@ export const routes = [
         element: <Returns/>
     },
     {
-        path: "/loan",
+        path: "/pending",
+        element: <Loan/>
+    },
+    {
+        path: "/history",
         element: <Loan/>
     },
     {

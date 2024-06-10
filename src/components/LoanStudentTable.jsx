@@ -12,8 +12,10 @@ export const LoanStudentTable = () => {
     const handleNewLoan = (book) => {
 
         const currentDate = new Date()
+        const loanDate = new Date()
         const returnDate = new Date()
-        returnDate.setDate(currentDate.getDate() + 14)
+        loanDate.setDate(currentDate.getDate() + 3)
+        returnDate.setDate(currentDate.getDate() + 17)
 
         const newLoan = {
             id: loans.length + 1,

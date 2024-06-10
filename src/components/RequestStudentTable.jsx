@@ -13,7 +13,7 @@ export const RequestStudentTable = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Tiulo</th>
+                        <th>Titulo</th>
                         <th>Autor</th>
                         <th>Categoria</th>
                         <th>Fecha de solicitud</th>
