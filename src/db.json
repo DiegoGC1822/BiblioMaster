@@ -101,6 +101,13 @@
             "author": "J.R.R. Tolkien",
             "category": "Fantasy",
             "available": true
+        },
+        {
+            "id": 11,
+            "title": "Programming Fundamentals",
+            "author": "Joyanes",
+            "category": "Programming",
+            "available": true
         }
     ],
     "loans": [
