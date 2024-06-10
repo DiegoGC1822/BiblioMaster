@@ -31,7 +31,7 @@ export const RequestStudentTable = () => {
                             }
                             
                             return (
-                                <tr key={book.id}>
+                                <tr key={loan.id}>
                                     <td>{book.title}</td>
                                     <td>{book.author}</td>
                                     <td>{book.category}</td>
