@@ -9,6 +9,7 @@ export default class Queue {
     constructor() {
       this.front = null; // Primer nodo en la cola
       this.rear = null;  // Último nodo en la cola
+      this.size = 0;
     }
   
     // Método para añadir un elemento al final de la cola
@@ -20,6 +21,7 @@ export default class Queue {
         this.rear.next = newNode;
         this.rear = newNode;
       }
+      this.size++;
     }
   
     // Método para eliminar un elemento del frente de la cola
@@ -32,6 +34,7 @@ export default class Queue {
       if (this.front === null) {
         this.rear = null;
       }
+      this.size--;
       return dequeuedNode.value;
     }
   

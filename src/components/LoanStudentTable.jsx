@@ -21,7 +21,7 @@ export const LoanStudentTable = () => {
             id: loans.length + 1,
             bookId: book.id,
             userId: actualUser.id,
-            loanDate: fechaFormateada(currentDate),
+            loanDate: fechaFormateada(loanDate),
             returnDate: fechaFormateada(returnDate),
             state: "Pending"
         }
