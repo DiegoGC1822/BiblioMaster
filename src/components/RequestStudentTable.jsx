@@ -16,6 +16,8 @@ export const RequestStudentTable = () => {
                         <th>Tiulo</th>
                         <th>Autor</th>
                         <th>Categoria</th>
+                        <th>Fecha de solicitud</th>
+                        <th>Fecha de devolución</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
@@ -34,6 +36,8 @@ export const RequestStudentTable = () => {
                                     <td>{book.author}</td>
                                     <td>{book.category}</td>
                                     <td>{loan.state}</td>
+                                    <td>{loan.loanDate}</td>
+                                    <td>{loan.returnDate}</td>
                                 </tr>
                             )
                         })
