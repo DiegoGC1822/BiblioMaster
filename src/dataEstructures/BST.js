@@ -1,5 +1,10 @@
-// BST.js
-import BSTNode from './BSTNode';
+class BSTNode {
+    constructor(book) {
+        this.book = book;
+        this.left = null;
+        this.right = null;
+    }
+}
 
 class BST {
     constructor() {
