@@ -1,14 +1,124 @@
 {
     "users" : [
         {
+            "id": 1,
             "username": "admin",
             "password": "admin",
             "role": "Administrator"
         },
         {
-            "username": "user",
-            "password": "user",
+            "id": 2,
+            "username": "user1",
+            "password": "user1",
             "role": "Estudent"
+        },
+        {
+            "id": 3,
+            "username": "user2",
+            "password": "user2",
+            "role": "Estudent"
+        },
+        {
+            "id": 4,
+            "username": "user3",
+            "password": "user3",
+            "role": "Estudent"
+        },
+        {
+            "id": 5,
+            "username": "user4",
+            "password": "user4",
+            "role": "Estudent"
+        }
+    ],
+    "books": [
+        {
+            "id": 1,
+            "title": "The Lord of the Rings",
+            "author": "J.R.R. Tolkien",
+            "category": "Fantasy",
+            "available": true
+        },
+        {
+            "id": 2,
+            "title": "1984",
+            "author": "George Orwell",
+            "category": "Dystopian",
+            "available": true
+        },
+        {
+            "id": 3,
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "category": "Classic",
+            "available": true
+        },
+        {
+            "id": 4,
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "category": "Romance",
+            "available": true
+        },
+        {
+            "id": 5,
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "category": "Classic",
+            "available": true
+        },
+        {
+            "id": 6,
+            "title": "Moby Dick",
+            "author": "Herman Melville",
+            "category": "Adventure",
+            "available": true
+        },
+        {
+            "id": 7,
+            "title": "War and Peace",
+            "author": "Leo Tolstoy",
+            "category": "Historical",
+            "available": true
+        },
+        {
+            "id": 8,
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "category": "Classic",
+            "available": true
+        },
+        {
+            "id": 9,
+            "title": "Brave New World",
+            "author": "Aldous Huxley",
+            "category": "Dystopian",
+            "available": true
+        },
+        {
+            "id": 10,
+            "title": "The Hobbit",
+            "author": "J.R.R. Tolkien",
+            "category": "Fantasy",
+            "available": true
+        }
+    ],
+    "loans": [
+        {
+            "id": 1,
+            "bookId": 1,
+            "userId": 2,
+            "loanDate": "01/01/2022",
+            "returnDate": "15/01/2022",
+            "state": "Returned"
+        },
+        {
+            "id": 2,
+            "bookId": 2,
+            "userId": 2,
+            "loanDate": "01/01/2022",
+            "returnDate": "15/01/2022",
+            "state": "Returned"
         }
     ]
 }
