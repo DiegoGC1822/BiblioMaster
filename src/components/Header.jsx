@@ -13,8 +13,9 @@ export const Header = () => {
     const { actualUser } = useUserContext()
     const location = useLocation()
     const iconsRole = actualUser.role === "Administrator" ? icons.Administrator : icons.Estudent
-    const pIcons = iconsRole
-    const sIcons = pIcons.find(icon => icon.to === location.pathname).subIcons
+    const pIcons = iconsRole ? iconsRole : []
+    const currentIcon = pIcons.find(icon => icon.to.includes(location.pathname))
+    const sIcons = currentIcon && currentIcon.subIcons ? currentIcon.subIcons : []
 
     return (
         <div>
