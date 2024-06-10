@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom"
-import { NewBooks } from "./NewBooks.jsx"
-import { EditBooks } from "./EditBooks.jsx"
-import { Header } from "../../components/Header.jsx"
+import { NewBooks } from "../components/NewBooks.jsx"
+import { EditBooks } from "../components/EditBooks.jsx"
+import { Header } from "../components/Header.jsx"
 
 export const Books = () => {
 
@@ -16,9 +16,9 @@ export const Books = () => {
     }
 
     return (
-        <div>
+        <>
             <Header/>
             {handleBooks()}
-        </div>
+        </>
     )
 }
