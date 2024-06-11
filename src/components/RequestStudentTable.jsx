@@ -1,6 +1,7 @@
 import { useLoansContext } from "../contexts/loansContext"
 import { useBooksContext } from "../contexts/booksContext"
 import { useUserContext } from "../contexts/userContext"
+import "../styles/Tables.module.css"
 
 export const RequestStudentTable = () => {
 
