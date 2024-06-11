@@ -11,27 +11,30 @@ class BST {
         this.root = null;
     }
 
-    insert(book) {
+    insert(book, criterion) {
         const newNode = new BSTNode(book);
         if (this.root === null) {
             this.root = newNode;
         } else {
-            this.insertNode(this.root, newNode);
+            this.insertNode(this.root, newNode , criterion);
         }
     }
 
-    insertNode(node, newNode) {
-        if (newNode.book.title < node.book.title) {
+    insertNode(node, newNode, criterion) {
+        const nodeValue = node.book[criterion].toLowerCase();
+        const newNodeValue = newNode.book[criterion].toLowerCase();
+
+        if (newNodeValue < nodeValue) {
             if (node.left === null) {
                 node.left = newNode;
             } else {
-                this.insertNode(node.left, newNode);
+                this.insertNode(node.left, newNode, criterion);
             }
         } else {
             if (node.right === null) {
                 node.right = newNode;
             } else {
-                this.insertNode(node.right, newNode);
+                this.insertNode(node.right, newNode, criterion);
             }
         }
     }

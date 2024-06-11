@@ -8,13 +8,13 @@ export const FilterBook = ({ setWord, word, activate, setActivate }) => {
     const [searchCriterion, setSearchCriterion] = useState("title"); // Nuevo estado para el criterio de búsqueda
 
     const tree = new BST();
-    books.forEach(book => tree.insert(book));
+    books.forEach(book => tree.insert(book,searchCriterion));
 
     const handleWord = (e) => {
         e.preventDefault();
 
         if (activate) {
-            const result = tree.search(word, searchCriterion); // Pasar el criterio de búsqueda al método de búsqueda
+            const result = tree.search(word.trim(), searchCriterion); // Pasar el criterio de búsqueda al método de búsqueda
             setSearchResult(result);
         } else {
             setWord("");
