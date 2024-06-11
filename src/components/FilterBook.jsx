@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export const FilterBook = ({ setWord, word, activate, setActivate }) => {
     const { books } = useBooksContext();
-    const [searchResult, setSearchResult] = useState(null);
+    const [searchResult, setSearchResult] = useState([]);
     const [searchCriterion, setSearchCriterion] = useState("title"); // Nuevo estado para el criterio de búsqueda
 
     const tree = new BST();
@@ -18,10 +18,11 @@ export const FilterBook = ({ setWord, word, activate, setActivate }) => {
             setSearchResult(result);
         } else {
             setWord("");
-            setSearchResult(null);
+            setSearchResult([]);
         }
 
         setActivate((prevActivate) => !prevActivate);
+        console.log(tree)
     };
 
     return (
@@ -37,13 +38,17 @@ export const FilterBook = ({ setWord, word, activate, setActivate }) => {
                     {activate ? "Buscar" : "Cancelar"}
                 </button>
             </form>
-            {searchResult &&
+            {searchResult.length > 0 && 
                 <div>
-                    <h2>Resultado de la búsqueda:</h2>
-                    <p>Título: {searchResult.title}</p>
-                    <p>Autor: {searchResult.author}</p>
-                    <p>Categoría: {searchResult.category}</p>
-                    <p>Disponible: {searchResult.available ? 'Sí' : 'No'}</p>
+                    <h1>Resultados</h1>
+                    {searchResult.map((book) => (
+                        <div key={book.id}>
+                            <p>Título: {book.title}</p>
+                            <p>Autor: {book.author}</p>
+                            <p>Categoría: {book.category}</p>
+                            <p>Disponible: {book.available ? 'Sí' : 'No'}</p>
+                        </div>
+                    ))}
                 </div>
             }
         </>

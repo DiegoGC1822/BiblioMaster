@@ -39,24 +39,30 @@ class BST {
         }
     }
 
-    search(word, criterion) { // Agregar el criterio como parámetro
-        return this.searchNode(this.root, word, criterion);
+    search(word, criterion) {
+        const results = [];
+        this.searchNode(this.root, word.trim().toLowerCase(), criterion, results);
+        return results;
     }
 
-    searchNode(node, word, criterion) {
+    searchNode(node, word, criterion, results) {
         if (node === null) {
-            return null;
+            return;
         }
 
         const nodeValue = node.book[criterion].toLowerCase();
         const searchValue = word.toLowerCase();
 
+        // Perform the binary search and collect matching nodes
         if (searchValue < nodeValue) {
-            return this.searchNode(node.left, word, criterion);
+            this.searchNode(node.left, word, criterion, results);
         } else if (searchValue > nodeValue) {
-            return this.searchNode(node.right, word, criterion);
+            this.searchNode(node.right, word, criterion, results);
         } else {
-            return node.book;
+            results.push(node.book);
+            // Continue searching in both left and right subtrees
+            this.searchNode(node.left, word, criterion, results);
+            this.searchNode(node.right, word, criterion, results);
         }
     }
 }
