@@ -36,18 +36,22 @@ class BST {
         }
     }
 
-    search(title) {
-        return this.searchNode(this.root, title);
+    search(word, criterion) { // Agregar el criterio como parámetro
+        return this.searchNode(this.root, word, criterion);
     }
 
-    searchNode(node, title) {
+    searchNode(node, word, criterion) {
         if (node === null) {
             return null;
         }
-        if (title < node.book.title) {
-            return this.searchNode(node.left, title);
-        } else if (title > node.book.title) {
-            return this.searchNode(node.right, title);
+
+        const nodeValue = node.book[criterion].toLowerCase();
+        const searchValue = word.toLowerCase();
+
+        if (searchValue < nodeValue) {
+            return this.searchNode(node.left, word, criterion);
+        } else if (searchValue > nodeValue) {
+            return this.searchNode(node.right, word, criterion);
         } else {
             return node.book;
         }
