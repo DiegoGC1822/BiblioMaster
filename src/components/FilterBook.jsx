@@ -1,6 +1,7 @@
 import { useBooksContext } from "../contexts/booksContext";
 import BST from "../dataEstructures/BST";
 import { useState } from "react";
+import searchInput from "../styles/Form.module.css";
 
 export const FilterBook = ({ setWord, word, activate, setActivate }) => {
     const { books } = useBooksContext();
@@ -27,28 +28,30 @@ export const FilterBook = ({ setWord, word, activate, setActivate }) => {
 
     return (
         <>
-            <form onSubmit={handleWord}>
-                <select value={searchCriterion} onChange={(e) => setSearchCriterion(e.target.value)}>
-                    <option value="title">Título</option>
-                    <option value="author">Autor</option>
-                    <option value="category">Categoría</option>
-                </select>
-                <input type="text" value={word} onChange={(e) => setWord(e.target.value)} />
-                <button>
-                    {activate ? "Buscar" : "Cancelar"}
-                </button>
+            <form onSubmit={handleWord} className={searchInput.container}>
+                <div>
+                    <select value={searchCriterion} onChange={(e) => setSearchCriterion(e.target.value)}>
+                        <option value="title">Título</option>
+                        <option value="author">Autor</option>
+                        <option value="category">Categoría</option>
+                    </select>
+                    <input type="text" value={word} onChange={(e) => setWord(e.target.value)} />
+                    <button>
+                        {activate ? "Buscar" : "Cancelar"}
+                    </button>
+                </div>
             </form>
             {searchResult.length > 0 && 
                 <div>
                     <h1>Resultados</h1>
-                    {searchResult.map((book) => (
-                        <div key={book.id}>
-                            <p>Título: {book.title}</p>
-                            <p>Autor: {book.author}</p>
-                            <p>Categoría: {book.category}</p>
-                            <p>Disponible: {book.available ? 'Sí' : 'No'}</p>
-                        </div>
-                    ))}
+                        {searchResult.map((book) => (
+                            <div key={book.id}>
+                                <p style={{fontWeight: "bold"}}>Título: {book.title}</p>
+                                <p>Autor: {book.author}</p>
+                                <p>Categoría: {book.category}</p>
+                                <p>Disponible: {book.available ? 'Sí' : 'No'}</p>
+                            </div>
+                        ))}
                 </div>
             }
         </>
