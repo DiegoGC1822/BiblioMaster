@@ -1,10 +1,4 @@
-class BSTNode {
-    constructor(book) {
-        this.book = book;
-        this.left = null;
-        this.right = null;
-    }
-}
+import BSTNode from "./BSTNode"
 
 class BST {
     constructor() {
