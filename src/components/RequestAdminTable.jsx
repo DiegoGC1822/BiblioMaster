@@ -1,16 +1,21 @@
 import { useLoansContext } from "../contexts/loansContext"
 import { useBooksContext } from "../contexts/booksContext"
-import { users } from "../db.json"
+import { useUsersContext } from "../contexts/usersContext"
 import Queue from "../dataEstructures/Queue"
 
 export const RequestAdminTable = () => {
 
     const { books } = useBooksContext()
     const { loans, setLoans } = useLoansContext()
-    const existedUsers = users
+    const { users } = useUsersContext()
     const requestedLoans = loans.filter(loan => loan.state === "Pending")
     const loansQueue = new Queue()
     requestedLoans.forEach(element => loansQueue.enqueue(element))
+    const queue = {
+        front: loansQueue.front,
+        rear: loansQueue.rear,
+        size: loansQueue.size
+    }
 
     const handleAccept = (loanId) => {
         setLoans(prevLoans =>
@@ -43,7 +48,7 @@ export const RequestAdminTable = () => {
     
         while (!loansQueue.isEmpty()) {
           const actualLoan = loansQueue.dequeue()
-          const user = existedUsers.find(user => user.id === actualLoan.userId)
+          const user = users.find(user => user.id === actualLoan.userId)
           const book = books.find(book => book.id === actualLoan.bookId)
     
           if (!book || !user) {
@@ -66,6 +71,7 @@ export const RequestAdminTable = () => {
     }
 
     return (
+        console.log(queue),
         <table>
             <thead>
                 <tr>
