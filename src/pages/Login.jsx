@@ -1,6 +1,6 @@
 import HashTable from '../dataEstructures/HashTable'
 import { useNavigate } from 'react-router-dom'
-import db from '../db.json'
+import { useUsersContext } from '../contexts/usersContext'
 import { useState } from 'react'
 import { useUserContext } from '../contexts/userContext'
 import styles from '../styles/Login.module.css'
@@ -10,16 +10,17 @@ export const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const { setActualUser } = useUserContext()
+    const { users } = useUsersContext()
     const navigate = useNavigate()
 
-    const users = new HashTable()
-    db.users.forEach(user => {
-        users.add(user.username, user)
+    const THusers = new HashTable()
+    users.forEach(user => {
+        THusers.add(user.username, user)
     })
 
     const handleLogin = (e) => {
         e.preventDefault()
-        const user = users.find(username,password)
+        const user = THusers.find(username,password)
         if (user && user.value.password === password) {
             console.log('Login successful')
             setActualUser(user.value)
@@ -31,7 +32,7 @@ export const Login = () => {
                 console.log(user)
             }
         } else {
-            console.log('Login failed')
+            alert("Usuario o contraseña incorrecta")
         }
         console.log(users)
     }
