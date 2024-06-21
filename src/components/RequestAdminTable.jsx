@@ -1,6 +1,7 @@
 import { useLoansContext } from "../contexts/loansContext"
 import { useBooksContext } from "../contexts/booksContext"
 import { useUsersContext } from "../contexts/usersContext"
+import { useEffect } from "react"
 import Queue from "../dataEstructures/Queue"
 
 export const RequestAdminTable = () => {
@@ -18,31 +19,29 @@ export const RequestAdminTable = () => {
     }
 
     const handleAccept = (loanId) => {
-        let acceptedLoan
         setLoans(prevLoans =>
-          prevLoans.map(loan => {
-              if (loan.id === loanId) {
-                  acceptedLoan = { ...loan, state: "Accepted" };
-                  return acceptedLoan
-              }
-              return loan
-          })
+          prevLoans.map(loan => loan.id === loanId ? {...loan, state: "Accepted" } : loan)
       )
-      if(acceptedLoan){
-        setBooks(prevBooks => 
-          prevBooks.map(book => book.id == acceptedLoan.bookId? {...book, "available": false} : book)
-        )
-      }
     }
     
     const handleReject = (loanId) => {
         setLoans(prevLoans =>
-          prevLoans.map(loan =>
-            loan.id === loanId ? { ...loan, state: "Rejected" } : loan
-          )
+          prevLoans.map(loan => loan.id === loanId ? { ...loan, state: "Rejected" } : loan)
         )
     }
-    
+
+    useEffect(() => {
+      // Actualizar la disponibilidad del libro una vez que los préstamos se hayan actualizado
+      loans.forEach(loan => {
+        if (loan.state === "Accepted") {
+          setBooks(prevBooks =>
+            prevBooks.map(book =>
+              book.id === loan.bookId ? { ...book, available: false } : book
+            )
+          )
+        }
+      })
+    }, [loans, setBooks])
 
     const renderLoans = () => {
 
