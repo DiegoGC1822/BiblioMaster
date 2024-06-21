@@ -1,7 +1,6 @@
 import { useLoansContext } from "../contexts/loansContext"
 import { useUserContext } from "../contexts/userContext"
 import { useBooksContext } from "../contexts/booksContext"
-import { fechaFormateada } from "../utils/FechaFormateada"
 
 export const LoanStudentTable = () => {
 
@@ -12,17 +11,19 @@ export const LoanStudentTable = () => {
     const handleNewLoan = (book) => {
 
         const currentDate = new Date()
-        const loanDate = new Date()
-        const returnDate = new Date()
+        let loanDate = new Date()
+        let returnDate = new Date()
         loanDate.setDate(currentDate.getDate() + 3)
+        loanDate = loanDate.toISOString().split('T')[0]
         returnDate.setDate(currentDate.getDate() + 17)
+        returnDate = returnDate.toISOString().split('T')[0]
 
         const newLoan = {
             id: loans.length + 1,
             bookId: book.id,
             userId: actualUser.id,
-            loanDate: fechaFormateada(loanDate),
-            returnDate: fechaFormateada(returnDate),
+            loanDate: loanDate,
+            returnDate: returnDate,
             state: "Pending"
         }
         setLoans((prevLoans) => [...prevLoans, newLoan])
