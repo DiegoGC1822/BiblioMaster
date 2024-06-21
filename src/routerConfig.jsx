@@ -49,7 +49,7 @@ export const routes = [
         element: <Loan/>
     },
     {
-        path: "/history",
+        path: "/renovateLoan",
         element: <Loan/>
     },
     {

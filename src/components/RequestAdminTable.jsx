@@ -5,7 +5,7 @@ import Queue from "../dataEstructures/Queue"
 
 export const RequestAdminTable = () => {
 
-    const { books } = useBooksContext()
+    const { books, setBooks } = useBooksContext()
     const { loans, setLoans } = useLoansContext()
     const { users } = useUsersContext()
     const requestedLoans = loans.filter(loan => loan.state === "Pending")
@@ -18,11 +18,21 @@ export const RequestAdminTable = () => {
     }
 
     const handleAccept = (loanId) => {
+        let acceptedLoan
         setLoans(prevLoans =>
-          prevLoans.map(loan =>
-            loan.id === loanId ? { ...loan, state: "Accepted" } : loan
-          )
+          prevLoans.map(loan => {
+              if (loan.id === loanId) {
+                  acceptedLoan = { ...loan, state: "Accepted" };
+                  return acceptedLoan
+              }
+              return loan
+          })
+      )
+      if(acceptedLoan){
+        setBooks(prevBooks => 
+          prevBooks.map(book => book.id == acceptedLoan.bookId? {...book, "available": false} : book)
         )
+      }
     }
     
     const handleReject = (loanId) => {

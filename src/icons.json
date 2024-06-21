@@ -37,7 +37,7 @@
                 {
                     "name": "Prestamo",
                     "class": "fa-solid fa-suitcase",
-                    "to": ["/pending","/history"],
+                    "to": ["/pending","/renovateLoan"],
                     "subIcons": [
                         {
                             "name": "Pendientes",
@@ -45,9 +45,9 @@
                             "to": ["/pending"]
                         },
                         {
-                            "name": "Historial",
+                            "name": "Renovacion",
                             "class": "fa-solid fa-folder",
-                            "to": ["/history"]
+                            "to": ["/renovateLoan"]
                         }
                     ]
                 },

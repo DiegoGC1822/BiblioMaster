@@ -50,7 +50,7 @@ export const NewUser = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="username">Nombre:</label>
+                    <label htmlFor="username">Usuario:</label>
                     <input
                     type="text"
                     name="username"
@@ -59,7 +59,7 @@ export const NewUser = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Email:</label>
+                    <label htmlFor="password">Contraseña:</label>
                     <input
                     type="text"
                     name="password"

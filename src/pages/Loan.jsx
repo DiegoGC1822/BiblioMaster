@@ -1,6 +1,6 @@
 import { Header } from "../components/Header"
 import { RequestAdminTable } from "../components/RequestAdminTable"
-import { LoanHistory } from "../components/LoanHistory"
+import { RenovationAdminTable } from "../components/RenovationAdminTable"
 import { useLocation } from "react-router-dom"
 
 export const Loan = () => {
@@ -11,7 +11,7 @@ export const Loan = () => {
         if(location.pathname === "/pending"){
             return <RequestAdminTable/>
         }else{
-            return <LoanHistory/>
+            return <RenovationAdminTable/>
         }
     }
 

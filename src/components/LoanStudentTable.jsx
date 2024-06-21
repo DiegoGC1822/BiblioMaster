@@ -53,6 +53,7 @@ export const LoanStudentTable = () => {
                         <th>Autor</th>
                         <th>Categoria</th>
                         <th>Reserva</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,7 @@ export const LoanStudentTable = () => {
                                     <td>{book.author}</td>
                                     <td>{book.category}</td>
                                     <td>{handleLoan(book)}</td>
+                                    <td>{book.available? "Disponible": "Ocupado"}</td>
                                 </tr>
                             )
                         })
