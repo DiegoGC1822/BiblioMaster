@@ -35,13 +35,9 @@ export const LoanStudentTable = () => {
         
         if (!book.available || (userLoan && (userLoan.state === "Pending" || userLoan.state === "Accepted"))) {
             return "Reservado"
-        } else if (userLoan && (userLoan.state === "Rejected" || userLoan.state === "Returned")) {
-            return <button onClick={() => handleNewLoan(book)}>Reservar</button>
-        } else if (!userLoan) {
-            return <button onClick={() => handleNewLoan(book)}>Reservar</button>
-        } else {
-            return "Reservado"
         }
+        return <button onClick={() => handleNewLoan(book)}>Reservar</button>
+        
     }
 
     return(
