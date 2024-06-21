@@ -115,16 +115,16 @@
             "id": 1,
             "bookId": 1,
             "userId": 2,
-            "loanDate": "01/01/2022",
-            "returnDate": "15/01/2022",
+            "loanDate": "2022-01-01",
+            "returnDate": "2022-01-15",
             "state": "Returned"
         },
         {
             "id": 2,
             "bookId": 2,
             "userId": 2,
-            "loanDate": "01/01/2022",
-            "returnDate": "15/01/2022",
+            "loanDate": "2022-01-02",
+            "returnDate": "2022-01-13",
             "state": "Returned"
         }
     ]

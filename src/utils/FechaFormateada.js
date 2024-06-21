@@ -4,5 +4,5 @@ export const fechaFormateada = (date) => {
     let año = date.getFullYear();
     dia = dia < 10 ? "0" + dia : dia;
     mes = mes < 10 ? "0" + mes : mes;
-    return `${dia}/${mes}/${año}`    
+    return `${año}-${mes}-${dia}`    
 }
