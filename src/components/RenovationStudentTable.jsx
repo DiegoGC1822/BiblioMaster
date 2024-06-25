@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoansContext } from '../contexts/loansContext';
 import { useBooksContext } from '../contexts/booksContext';
 import { useUserContext } from '../contexts/userContext';
 import MaxHeap from '../dataEstructures/MaxHeap';
-import { mergeSort } from '../algorithms/Mergesort'; // Importa directamente la función mergeSort
+import { mergeSort } from '../algorithms/Mergesort';
 
 export const RenovationStudentTable = () => {
     const { loans } = useLoansContext();
     const { books } = useBooksContext();
     const { actualUser } = useUserContext();
+    const [renewalRequests, setRenewalRequests] = useState([]);
 
     // Filtrar solo las reservas aceptadas del usuario actual
     const acceptedLoans = loans.filter(loan => loan.userId === actualUser.id && loan.state === 'Accepted');
 
-    // Agregar lógica para MaxHeap y mergeSort
+    // Lógica del MaxHeap (estructura de datos) y el Mergesort (algoritmo)
     const heap = new MaxHeap();
-    acceptedLoans.forEach(loan => heap.insert(loan));
-    const sortedLoans = mergeSort(acceptedLoans); // Usa mergeSort directamente
+    acceptedLoans.forEach(loan => heap.insertar(loan));
+    const sortedLoans = mergeSort(acceptedLoans);
 
-    const handleRenewalRequest = (loanId) => {
-        // Lógica para solicitar renovación
-        console.log(`Solicitando renovación para préstamo con ID ${loanId}`);
+    const pendingRenewe = (loanId) => {
+        setRenewalRequests(prevState => [...prevState, loanId]);
     };
 
     return (
@@ -34,13 +34,15 @@ export const RenovationStudentTable = () => {
                         <th>Categoría</th>
                         <th>Fecha de reserva</th>
                         <th>Fecha de aceptación</th>
-                        <th>Solicitar renovación</th>
+                        <th>Solicitud</th>
                     </tr>
                 </thead>
                 <tbody>
                     {sortedLoans.map((loan) => {
                         const book = books.find(b => b.id === loan.bookId);
                         if (!book) return null;
+
+                        const esSolicitado = renewalRequests.includes(loan.id);
 
                         return (
                             <tr key={loan.id}>
@@ -50,7 +52,13 @@ export const RenovationStudentTable = () => {
                                 <td>{loan.loanDate}</td>
                                 <td>{loan.acceptanceDate}</td>
                                 <td>
-                                    <button onClick={() => handleRenewalRequest(loan.id)}>Solicitar renovación</button>
+                                    {esSolicitado ? (
+                                        'Solicitud enviada'
+                                    ) : (
+                                        <button onClick={() => pendingRenewe(loan.id)}>
+                                            Solicitar renovación
+                                        </button>
+                                    )}
                                 </td>
                             </tr>
                         );

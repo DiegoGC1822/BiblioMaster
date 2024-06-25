@@ -1,49 +1,46 @@
-// MaxHeap.js
-export class MaxHeap {
+export default class MaxHeap {
     constructor() {
         this.heap = [];
     }
 
-    insert(value) {
-        this.heap.push(value);
-        this.bubbleUp(this.heap.length - 1);
+    insertar(valor) { 
+        this.heap.push(valor);
+        this.ascender(this.heap.length - 1);
     }
 
-    extractMax() {
+    extraerMax() {
         if (this.heap.length < 2) return this.heap.pop();
         const max = this.heap[0];
         this.heap[0] = this.heap.pop();
-        this.bubbleDown(0);
+        this.descender(0);
         return max;
     }
 
-    bubbleUp(index) {
+    ascender(index) {
         while (index > 0) {
-            const parentIndex = Math.floor((index - 1) / 2);
-            if (this.heap[index] <= this.heap[parentIndex]) break;
-            [this.heap[index], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[index]];
-            index = parentIndex;
+            const indexPadre = Math.floor((index - 1) / 2);
+            if (this.heap[index] <= this.heap[indexPadre]) break;
+            [this.heap[index], this.heap[indexPadre]] = [this.heap[indexPadre], this.heap[index]];
+            index = indexPadre;
         }
     }
 
-    bubbleDown(index) {
-        const lastIndex = this.heap.length - 1;
+    descender(index) {
+        const ultindex = this.heap.length - 1;
         while (true) {
-            const leftChildIndex = 2 * index + 1;
-            const rightChildIndex = 2 * index + 2;
-            let largestIndex = index;
+            const indexHijoIzq = 2 * index + 1;
+            const indexHijoDer = 2 * index + 2;
+            let indexMayor = index;
 
-            if (leftChildIndex <= lastIndex && this.heap[leftChildIndex] > this.heap[largestIndex]) {
-                largestIndex = leftChildIndex;
+            if (indexHijoIzq <= ultindex && this.heap[indexHijoIzq] > this.heap[indexMayor]) {
+                indexMayor = indexHijoIzq;
             }
-            if (rightChildIndex <= lastIndex && this.heap[rightChildIndex] > this.heap[largestIndex]) {
-                largestIndex = rightChildIndex;
+            if (indexHijoDer <= ultindex && this.heap[indexHijoDer] > this.heap[indexMayor]) {
+                indexMayor = indexHijoDer;
             }
-            if (largestIndex === index) break;
-            [this.heap[index], this.heap[largestIndex]] = [this.heap[largestIndex], this.heap[index]];
-            index = largestIndex;
+            if (indexMayor === index) break;
+            [this.heap[index], this.heap[indexMayor]] = [this.heap[indexMayor], this.heap[index]];
+            index = indexMayor;
         }
     }
 }
-
-export default MaxHeap;
