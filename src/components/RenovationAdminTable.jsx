@@ -20,10 +20,10 @@ export const RenovationAdminTable = ({criterion}) => {
 
     // Inicializar la lista de préstamos solo cuando `loans` cambia
     useEffect(() => {
-        const acceptedLoans = loans.filter(loan => loan.state === "Accepted" || loan.state === "Renewed")
+        const acceptedLoans = loans.filter(loan => loan.state === "Pending Renovation")
         const linkedLoans = new LinkedList()
         acceptedLoans.forEach(element => linkedLoans.add(element))
-        const sortedLoans = quickSort(linkedLoans, criterion)
+        const sortedLoans = quickSort(linkedLoans, criterion, books, users)
         setLoansList(sortedLoans)
     }, [loans, criterion, setLoansList])
 
