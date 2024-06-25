@@ -1,10 +1,12 @@
 import { Header } from "../components/Header"
+import { ReturnAdminTable } from "../components/ReturnAdminTable"
 
 export const Returns = () => {
+
     return (
         <div>
             <Header/>
-            <h1>Returns</h1>
+            <ReturnAdminTable/>
         </div>
     )
 }
