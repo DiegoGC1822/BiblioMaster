@@ -41,7 +41,7 @@ export const RenovationStudentTable = () => {
 
     return (
         <div>
-            <h1>Renovation Student Table</h1>
+            <h1>Tabla de renovación</h1>
             <table>
                 <thead>
                     <tr>
