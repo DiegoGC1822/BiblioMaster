@@ -1,6 +1,5 @@
 import { Login } from "./pages/Login.jsx"
 import { Books } from "./pages/Books.jsx"
-import { Sancions } from "./pages/Sancions.jsx"
 import { Administrate } from "./pages/Administrate.jsx"
 import { Users } from "./pages/Users.jsx"
 import { Returns } from "./pages/Returns.jsx"
@@ -19,10 +18,6 @@ export const routes = [
     {
         path: "/editbook",
         element: <Books/>
-    },
-    {
-        path: "/sancions",
-        element: <Sancions/>
     },
     {
         path: "/changepassword",

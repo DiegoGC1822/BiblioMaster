@@ -57,11 +57,6 @@
                     "to": ["/returns"]
                 },
                 {
-                    "name": "Sanciones",
-                    "class": "fa-solid fa-ban",
-                    "to": ["/sancions"]
-                },
-                {
                     "name": "Administrar",
                     "class": "fa-solid fa-user-gear",
                     "to": ["/data", "/changepassword"],

@@ -16,12 +16,12 @@ function partition(head, end, criterion, books, users) {
 
   while (current !== end) {
       if (getValue(current) < getValue(pivot)) {
-          prev = prev.next
-          ;[prev.value, current.value] = [current.value, prev.value]
+          prev = prev.next;
+          [prev.value, current.value] = [current.value, prev.value]
       }
-      current = current.next
+      current = current.next;
   }
-  ;[pivot.value, prev.value] = [prev.value, pivot.value]
+  [pivot.value, prev.value] = [prev.value, pivot.value]
   return prev
 }
 
