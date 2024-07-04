@@ -3,6 +3,9 @@ import { useBooksContext } from "../contexts/booksContext"
 import { useUsersContext } from "../contexts/usersContext"
 import { useEffect } from "react"
 import Queue from "../dataEstructures/Queue"
+import Button from '@mui/material/Button'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export const RequestAdminTable = () => {
 
@@ -70,8 +73,16 @@ export const RequestAdminTable = () => {
               <td>{user.username}</td>
               <td>{actualLoan.loanDate}</td>
               <td>{actualLoan.returnDate}</td>
-              <td><button onClick={() => handleAccept(actualLoan.id)}>Aceptar</button></td>
-              <td><button onClick={() => handleReject(actualLoan.id)}>Rechazar</button></td>
+              <td>
+                <Button onClick={() => handleAccept(actualLoan.id)} variant="contained" color="success" startIcon={<CheckCircleIcon />}>
+                Aceptar
+                </Button>
+              </td>
+              <td>
+                <Button onClick={() => handleReject(actualLoan.id)} variant="contained" color="error" startIcon={<CancelIcon />}>
+                  Rechazar
+                </Button>
+              </td>
             </tr>
           )
         }

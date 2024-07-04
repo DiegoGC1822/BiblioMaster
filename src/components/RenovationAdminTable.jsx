@@ -4,7 +4,8 @@ import { useUsersContext } from "../contexts/usersContext"
 import { useEffect, useState } from "react"
 import quickSort from "../algorithms/QuickSort"
 import LinkedList from "../dataEstructures/LinkedList"
-
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
+import Button from '@mui/material/Button'
 // Función para agregar días a una fecha
 const addDaysToDate = (date, days) => {
     const result = new Date(date)
@@ -88,7 +89,9 @@ export const RenovationAdminTable = ({criterion}) => {
                         {actualLoan.value.state === "Renewed" ? (
                             "Renovado"
                         ) : (
-                            <button onClick={() => handleRenew(id)}>Renovar</button>
+                            <Button onClick={() => handleRenew(id)} variant="contained" color="success" startIcon={<ChangeCircleIcon />}>
+                                Renovar
+                            </Button>
                         )}
                     </td>
                 </tr>

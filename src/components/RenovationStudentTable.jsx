@@ -4,6 +4,8 @@ import { useBooksContext } from '../contexts/booksContext';
 import { useUserContext } from '../contexts/userContext';
 import MaxHeap from '../dataEstructures/MaxHeap';
 import { mergeSort } from '../algorithms/Mergesort';
+import Button from '@mui/material/Button';
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 
 export const RenovationStudentTable = () => {
     const { loans, setLoans } = useLoansContext();
@@ -34,14 +36,15 @@ export const RenovationStudentTable = () => {
         const stateActions = {
             "Pending Renovation": "Esperando renovación",
             "Renewed": "Renovada",
-            "Accepted": <button onClick={() => pendingRenewe(loanId)}>Renovar</button>
+            "Accepted": <Button onClick={() => pendingRenewe(loanId)} startIcon={<ChangeCircleIcon />} variant='contained' color='success'>
+                            Renovar
+                        </Button>
         };
         return stateActions[loanState] || null;
     };
 
     return (
         <div>
-            <h1>Tabla de renovación</h1>
             <table>
                 <thead>
                     <tr>

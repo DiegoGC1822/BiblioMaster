@@ -1,12 +1,21 @@
 import { useBooksContext } from "../contexts/booksContext";
 import BST from "../dataEstructures/BST";
 import { useState } from "react";
-import searchInput from "../styles/Form.module.css";
+import Button from "@mui/material/Button";
+import SearchIcon from '@mui/icons-material/Search';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
 
 export const FilterBook = ({ setWord, word, activate, setActivate }) => {
     const { books } = useBooksContext();
     const [searchResult, setSearchResult] = useState([]);
-    const [searchCriterion, setSearchCriterion] = useState("title"); // Nuevo estado para el criterio de búsqueda
+    const [searchCriterion, setSearchCriterion] = useState("title");
 
     const tree = new BST();
     books.forEach(book => tree.insert(book,searchCriterion));
@@ -15,7 +24,7 @@ export const FilterBook = ({ setWord, word, activate, setActivate }) => {
         e.preventDefault();
 
         if (activate) {
-            const result = tree.search(word.trim(), searchCriterion); // Pasar el criterio de búsqueda al método de búsqueda
+            const result = tree.search(word.trim(), searchCriterion);
             setSearchResult(result);
         } else {
             setWord("");
@@ -28,31 +37,44 @@ export const FilterBook = ({ setWord, word, activate, setActivate }) => {
 
     return (
         <>
-            <form onSubmit={handleWord} className={searchInput.container}>
-                <div>
-                    <select value={searchCriterion} onChange={(e) => setSearchCriterion(e.target.value)}>
-                        <option value="title">Título</option>
-                        <option value="author">Autor</option>
-                        <option value="category">Categoría</option>
-                    </select>
-                    <input type="text" value={word} onChange={(e) => setWord(e.target.value)} />
-                    <button>
+            <form onSubmit={handleWord} style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px", marginBottom: "20px"}}>
+                <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                    <FormControl>
+                        <Select 
+                            value={searchCriterion}
+                            onChange={(e) => setSearchCriterion(e.target.value)}
+                        >
+                            <MenuItem value={'title'}>Titulo</MenuItem>
+                            <MenuItem value={'author'}>Autor</MenuItem>
+                            <MenuItem value={'category'}>Categoria</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <TextField label="Palabra clave" value={word} onChange={(e) => setWord(e.target.value)} sx={{ width: 300 }}/>
+                    <Button variant="contained" type="submit" startIcon={<SearchIcon />} sx={{ height: 50 }}>
                         {activate ? "Buscar" : "Cancelar"}
-                    </button>
+                    </Button>
                 </div>
             </form>
-            {searchResult.length > 0 && 
-                <div>
-                    <h1>Resultados</h1>
-                        {searchResult.map((book) => (
-                            <div key={book.id}>
-                                <p style={{fontWeight: "bold"}}>Título: {book.title}</p>
-                                <p>Autor: {book.author}</p>
-                                <p>Categoría: {book.category}</p>
-                                <p>Disponible: {book.available ? 'Sí' : 'No'}</p>
-                            </div>
-                        ))}
-                </div>
+            {searchResult.length > 0 &&
+                <Box>
+                    <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center", marginTop: "20px" }}>Resultados de la búsqueda</Typography>
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }}>
+                        <Stack
+                            spacing={2}
+                            direction={"row"}
+                            divider={<Divider orientation="vertical" flexItem />}
+                        >
+                                {searchResult.map((book) => (
+                                    <Box key={book.id}>
+                                        <p style={{fontWeight: "bold"}}>Título: {book.title}</p>
+                                        <p>Autor: {book.author}</p>
+                                        <p>Categoría: {book.category}</p>
+                                        <p>Disponible: {book.available ? 'Sí' : 'No'}</p>
+                                    </Box>
+                                ))}
+                        </Stack>  
+                    </Box>   
+                </Box>
             }
         </>
     );

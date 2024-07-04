@@ -1,7 +1,8 @@
 import { useLoansContext } from "../contexts/loansContext"
 import { useBooksContext } from "../contexts/booksContext"
 import { useUsersContext } from "../contexts/usersContext"
-
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
+import Button from '@mui/material/Button'
 
 export const ReturnAdminTable = () => {
     const { loans, setLoans } = useLoansContext()
@@ -29,7 +30,9 @@ export const ReturnAdminTable = () => {
                     <td>{loan.returnDate}</td>
                     <td>{loan.state}</td>
                     <td>
-                        <button onClick={() => handleReturn(loan.id)}>Devuelto</button>
+                        <Button variant="contained" onClick={() => handleReturn(loan.id)} startIcon={<DoneOutlineIcon />} >
+                            Devuelto
+                        </Button>
                     </td>
                 </tr>
             )

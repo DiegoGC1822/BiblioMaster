@@ -1,6 +1,8 @@
 import { useLoansContext } from "../contexts/loansContext"
 import { useUserContext } from "../contexts/userContext"
 import { useBooksContext } from "../contexts/booksContext"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
 
 export const LoanStudentTable = () => {
 
@@ -37,20 +39,20 @@ export const LoanStudentTable = () => {
         if (!book.available || (userLoan && (userLoan.state === "Pending" || userLoan.state === "Accepted"))) {
             return "Reservado"
         }
-        return <button onClick={() => handleNewLoan(book)}>Reservar</button>
+        return <Button onClick={() => handleNewLoan(book)} variant="contained">Reservar</Button>
         
     }
 
     return(
-        <div>
+        <div className="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>Titulo</th>
-                        <th>Autor</th>
-                        <th>Categoria</th>
-                        <th>Reserva</th>
-                        <th>Estado</th>
+                        <th><Typography variant="h6" sx={{fontWeight: "bold"}}>Titulo</Typography></th>
+                        <th><Typography variant="h6" sx={{fontWeight: "bold"}}>Autor</Typography></th>
+                        <th><Typography variant="h6" sx={{fontWeight: "bold"}}>Categoria</Typography></th>
+                        <th><Typography variant="h6" sx={{fontWeight: "bold"}}>Reserva</Typography></th>
+                        <th><Typography variant="h6" sx={{fontWeight: "bold"}}>Estado</Typography></th>
                     </tr>
                 </thead>
                 <tbody>

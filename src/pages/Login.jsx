@@ -3,7 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { useUsersContext } from '../contexts/usersContext'
 import { useState } from 'react'
 import { useUserContext } from '../contexts/userContext'
-import styles from '../styles/Login.module.css'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import background from '../assets/background.jpg'
+import Box from '@mui/material/Box'
 
 export const Login = () => {
 
@@ -38,15 +43,38 @@ export const Login = () => {
     }
 
     return (
-        <div className={styles.login}>
-            <div style ={{backgroundColor: '#DCD7D7', padding: '30px', borderRadius: '10px'}}>
-            <h1>BIBLIOMASTER</h1>
-            <form onSubmit={handleLogin}>
-                <input type="text" onChange={e => setUsername(e.target.value)}/>
-                <input type="password" onChange={e => setPassword(e.target.value)}/>
-                <button>Entrar</button>
-            </form>
-            </div>
-        </div>
+        <Box 
+            sx={{
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                height: '100vh', 
+                backgroundImage: `url(${background})`, 
+                backgroundPosition: 'center', 
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                margin: 0,
+                padding: 0,
+                width: '100vw'
+            }}
+        >
+            <Paper 
+                sx ={{ 
+                    padding: '30px', 
+                    borderRadius: '10px', 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)'
+                }}
+            >
+                <Typography variant="h3" component="h1" sx={{fontFamily: 'cursive'}}>BIBLIOMASTER</Typography>
+                <form onSubmit={handleLogin} style={{display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px', width: '100%'}}>
+                    <TextField label="Usuario" type="text" onChange={e => setUsername(e.target.value)}/>
+                    <TextField label="Contraseña" type="password" onChange={e => setPassword(e.target.value)}/>
+                    <Button variant="contained" type="submit">Entrar</Button>
+                </form>
+            </Paper>
+        </Box>
     )
 }
