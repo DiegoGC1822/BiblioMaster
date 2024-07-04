@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { useBooksContext } from "../contexts/booksContext";
 import { searchBooks } from "../algorithms/IndexedSearch"; // Importamos la función searchBooks desde IndexedSearch.js
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import EditIcon from '@mui/icons-material/Edit';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import Stack from "@mui/material/Stack";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
 
 export const EditBooks = () => {
     const { books, setBooks } = useBooksContext();
@@ -23,7 +34,7 @@ export const EditBooks = () => {
     };
 
     // Usamos la función searchBooks para obtener los libros filtrados según el término y la clave de búsqueda
-    const filteredBooks = searchBooks(books, searchTerm, searchKey);
+    const filteredBooks = searchBooks(books, searchTerm.trim(), searchKey);
 
     const handleEditClick = (bookId) => {
         // Encontramos el libro actual en base al ID
@@ -81,54 +92,75 @@ export const EditBooks = () => {
 
     return (
         <div>
-            <h1>Edit Books</h1>
-            <div>
-                <label htmlFor="searchTerm">Buscar:</label>
-                <input
-                    type="text"
-                    id="searchTerm"
-                    value={searchTerm}
-                    onChange={handleSearchTermChange}
-                />
-                <select value={searchKey} onChange={handleSearchKeyChange}>
-                    <option value="title">Título</option>
-                    <option value="author">Autor</option>
-                    <option value="category">Categoría</option>
-                </select>
+            <div style={{ display: "flex", justifyContent: "center", alignContent: "center", marginTop: "10px" }}>
+                <TextField label="Busqueda" value={searchTerm} onChange={handleSearchTermChange} sx={{ m: 1, width: "25ch" }}/>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <Select
+                        value={searchKey}
+                        onChange={handleSearchKeyChange}
+                        inputProps={{ "aria-label": "Without label" }}
+                    >
+                        <MenuItem value="title">Título</MenuItem>
+                        <MenuItem value="author">Autor</MenuItem>
+                        <MenuItem value="category">Categoría</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Categoría</th>
-                        <th>Disponibilidad</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredBooks.map((book) => (
-                        <tr key={book.id}>
-                            <td>{book.id}</td>
-                            <td>{book.title}</td>
-                            <td>{book.author}</td>
-                            <td>{book.category}</td>
-                            <td>{book.available ? "Disponible" : "No disponible"}</td>
-                            <td>
-                                {editingBookId === book.id ? (
-                                    <>
-                                        <button onClick={handleSaveClick}>Guardar</button>
-                                        <button onClick={handleCancelClick}>Cancelar</button>
-                                    </>
-                                ) : (
-                                    <button onClick={() => handleEditClick(book.id)}>Editar</button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div style={{ display: "flex", justifyContent: "center", alignContent: "center", marginTop: "10px" }}>
+                <div style={{ 
+                        marginTop: "10px", 
+                        maxHeight: "500px", 
+                        overflowY: "auto",
+                        width: "80%",
+                        justifySelf: "center"
+                    }}
+                >
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Categoría</th>
+                                <th>Disponibilidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredBooks.map((book) => (
+                                <tr key={book.id}>
+                                    <td>{book.id}</td>
+                                    <td>{book.title}</td>
+                                    <td>{book.author}</td>
+                                    <td>{book.category}</td>
+                                    <td>{book.available ? "Disponible" : "No disponible"}</td>
+                                    <td>
+                                        {editingBookId === book.id ? (
+                                            <Stack
+                                                direction="row"
+                                                spacing={2}
+                                                divider={<Divider orientation="vertical" flexItem />}
+                                                sx={{ justifyContent: "center", alignItems: "center" }}
+                                            >
+                                                <IconButton onClick={handleSaveClick} variant="contained" color="success" >
+                                                    <CheckCircleIcon />
+                                                </IconButton>
+                                                <IconButton onClick={handleCancelClick} variant="contained" color="error">
+                                                    <CancelIcon />
+                                                </IconButton>
+                                            </Stack>
+                                        ) : (
+                                            <Button onClick={() => handleEditClick(book.id)} variant="contained" startIcon={<EditIcon />}>
+                                                Editar
+                                            </Button>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             {editingBookId && (
                 <div>
                     <h2>Editar Libro</h2>

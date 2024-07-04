@@ -1,12 +1,14 @@
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 export const SortLoans = ({criterion, setCriterion}) => {
     return (
-        <div>
-            <select value={criterion} onChange={(e) => setCriterion(e.target.value)}>
-                <option value="loanDate">Fecha de prestamo</option>
-                <option value="returnDate">Fecha de devolución</option>
-                <option value="bookTitle">Título del libro</option>
-                <option value="username">Nombre del usuario</option> 
-            </select>
+        <div style={{display: "flex", justifyContent: "center", marginTop: "10px"}}>
+            <Select value={criterion} onChange={(e) => setCriterion(e.target.value)}>
+                <MenuItem value="loanDate">Fecha de prestamo</MenuItem>
+                <MenuItem value="returnDate">Fecha de devolución</MenuItem>
+                <MenuItem value="bookTitle">Título del libro</MenuItem>
+                <MenuItem value="username">Nombre del usuario</MenuItem>
+            </Select>
         </div>
     )
 }
