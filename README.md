@@ -1,8 +1,17 @@
-# React + Vite
+# TRABAJO FINAL PARA CURSO DE ESTRUCTURA DE DATOS Y ANALISIS Y DISEÑO DE ALGORITMOS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Programa hecho con React-Vite y Material UI
 
-Currently, two official plugins are available:
+Algoritmos usados:
+ - QuickSort
+ - Indexed Sort
+ - ShellSort
+ - Busqueda binaria
+ - Hashing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Estructuras de datos usados:
+ - Tabla Hash
+ - Arbol binario
+ - Cola
+ - Listas enlazadas
+ - Heap
