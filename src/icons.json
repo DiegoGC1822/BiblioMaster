@@ -59,17 +59,12 @@
                 {
                     "name": "Administrar",
                     "class": "fa-solid fa-user-gear",
-                    "to": ["/data", "/changepassword"],
+                    "to": ["/data"],
                     "subIcons": [
                         {
                             "name": "Datos",
                             "class": "fa-solid fa-database",
                             "to": ["/data"]
-                        },
-                        {
-                            "name": "Cambiar contraseña",
-                            "class": "fa-solid fa-user-pen",
-                            "to": ["/changepassword"]
                         },
                         {
                             "name": "Cerrar Sesion",

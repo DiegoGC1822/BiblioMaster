@@ -20,10 +20,6 @@ export const routes = [
         element: <Books/>
     },
     {
-        path: "/changepassword",
-        element: <Administrate/>
-    },
-    {
         path: "/data",
         element: <Administrate/>
     },
